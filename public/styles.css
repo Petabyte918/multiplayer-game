@@ -1,0 +1,33 @@
+html {
+    background-color: black;
+}
+
+canvas {
+    background-color: #FFFFFF;
+    margin: 100px;
+
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+div.stats {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    padding: 5px;
+    color: #383838;
+}
+
+div.stats ul {
+    list-style: none;
+    padding-left: 15px;
+}
+
+div.stats .bright {
+    color: #555;
+    font-weight: bold;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="styles.css">
+
+        <script src="/socket.io/socket.io.js"></script>
+
+        <script src="player.js"></script>
+        <script src="js/main.js"></script>
+
+        <title>Multiplayer Game</title>
+    </head>
+    <body onload="init()">
+        <div class="stats">
+            <ul>
+                <li>
+                    Δt/s = <span class="bright" id="dt">?</span>ms
+                </li>
+                <li>
+                    (x, y)/m = (<span class="bright" id="x">?</span>, <span class="bright" id="y">?</span>)
+                </li>
+                <li>
+                    (vx, vy)/ms^1 = (<span class="bright" id="vx">?</span>, <span class="bright" id="vy">?</span>)
+                </li>
+                <li>
+                    rotation/r = <span class="bright" id="rot">?</span>
+                </li>
+                <li>
+                    rotational velocity/rs^-1 = <span class="bright" id="rotv">?</span>
+                </li>
+            </ul>
+        </div>
+
+        <canvas id="game" width="512" height="512"></canvas>
+    </body>
+</html>
