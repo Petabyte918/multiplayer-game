@@ -80,6 +80,16 @@
             delete keys[evt.key]
         })
 
+        document.getElementById("name-form").addEventListener("submit", evt => {
+            let name = document.getElementById("change-name-input").value.trim()
+
+            if (name.length >= 1 || name.length >= 32) {
+                players[clientID].name = name
+            }
+
+            evt.preventDefault()
+        })
+
         window.setInterval(() => {
             dtSpan.innerHTML = deltaTime * 1000
             xSpan.innerHTML = round(player.pos.x, 2)

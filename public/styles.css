@@ -30,23 +30,23 @@ div#instructions {
     text-align: center;
 }
 
-div.stats {
+div.menu {
     position: absolute;
     color: #bdbdbd;
     font-size: 1.1em;
 }
 
-div.stats ul {
+div.menu ul {
     list-style: none;
     padding-left: 15px;
 }
 
-div.stats .bright {
+div.menu .bright {
     color: #dbdbdb;
     font-weight: bold;
 }
 
-div.stats a {
+div.menu a {
     color: #dbdbdb;
     font-weight: bold;
     color: #dbdbdb;
