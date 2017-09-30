@@ -49,11 +49,6 @@ io.on("connection", socket => {
     socket.on("right", () => {
         players[id].right()
     })
-
-    socket.on("pong", callback => {
-        console.log(callback);
-        callback()
-    })
 })
 
 function tick() {
