@@ -177,15 +177,15 @@
                 shouldMove.forward = true
             }
         } else {
-            if (keys["ArrowRight"]) {
+            if (keys.ArrowRight) {
                 shouldMove.right = true
             }
     
-            if (keys["ArrowLeft"]) {
+            if (keys.ArrowLeft) {
                 shouldMove.left = true
             }
     
-            if (keys["ArrowUp"]) {
+            if (keys.ArrowUp) {
                 shouldMove.forward = true
             }
         }
