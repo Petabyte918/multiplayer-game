@@ -3,6 +3,7 @@
 
     let canvas, ctx
     let players, player
+    let clientID
     let width, height
     let keys
     let lastTick
@@ -45,7 +46,10 @@
         player = new Player("anon", 256, 256)
 
         console.log("Sending client info...")
-        socket.emit("client info", player.condense(), id => players[id] = player)
+        socket.emit("client info", player.condense(), id => {
+            players[id] = player
+            clientID = id
+        })
 
         socket.on("tick", onTick)
 
@@ -99,7 +103,15 @@
 
         for (let id in players) {
             if (players.hasOwnProperty(id)) {
+                if (id === clientID) {
+                    ctx.fillStyle = "black"
+                }
+
                 players[id].render(ctx)
+
+                if (id === clientID) {
+                    ctx.fillStyle = "darkgrey"
+                }
             }
         }
     }
