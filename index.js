@@ -1,3 +1,6 @@
+const PORT = process.env.PORT || 3030
+console.log(process.env)
+
 const TICK_RATE = 15 // milliseconds
 let lastTick = new Date().getTime()
 
@@ -12,15 +15,11 @@ let Player = require("./engine/player.js").Player
 
 let players = {}
 
-app.use(express.static("public"))
-app.use(express.static("engine"))
+app.use(express.static(__dirname + "/public"))
+app.use(express.static(__dirname + "/engine"))
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html")
-})
-
-http.listen(3000, () => {
-    console.log("listening on *:3000")
 })
 
 io.on("connection", socket => {
@@ -76,3 +75,7 @@ function tick() {
 }
 
 Interval.run(tick, TICK_RATE)
+
+http.listen(PORT, () => {
+    console.log("listening on *:" + PORT)
+})
