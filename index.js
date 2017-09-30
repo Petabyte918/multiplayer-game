@@ -1,5 +1,4 @@
 const PORT = process.env.PORT || 3030
-console.log(process.env)
 
 const TICK_RATE = 15 // milliseconds
 let lastTick = new Date().getTime()
