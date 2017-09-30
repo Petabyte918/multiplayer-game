@@ -52,11 +52,8 @@ div.menu a {
     color: #dbdbdb;
 }
 
-div.menu form {
-    width: 500px;
-}
-
 div.menu input[type=submit] {
-    float: right;
-    width: 90px;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
