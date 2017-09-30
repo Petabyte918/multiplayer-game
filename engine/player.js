@@ -42,7 +42,7 @@ class Player {
         ctx.font = "monospace"
         ctx.textAlign = "center"
         ctx.textBaseline = "middle"
-        ctx.fillText(this.name, this.pos.x, this.pos.y + PLAYER_SIDELENGTH)
+        ctx.fillText(this.name, this.pos.x, this.pos.y + PLAYER_SIDELENGTH + 5)
     }
 
     update(dt) {
