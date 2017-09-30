@@ -173,7 +173,7 @@
                 shouldMove.right = true
             }
     
-            if (orientation.beta < 2) {
+            if (orientation.beta < -1) {
                 shouldMove.forward = true
             }
         } else {
