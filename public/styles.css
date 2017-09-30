@@ -15,6 +15,7 @@ canvas {
 }
 
 div.stats {
+    font-family: monospace;
     position: absolute;
     left: 10px;
     top: 10px;
@@ -30,4 +31,8 @@ div.stats ul {
 div.stats .bright {
     color: #555;
     font-weight: bold;
+}
+
+div.stats a {
+    color: #555;
 }
