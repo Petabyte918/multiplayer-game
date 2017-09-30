@@ -88,6 +88,8 @@
             }
 
             evt.preventDefault()
+
+            return false
         })
 
         window.setInterval(() => {
