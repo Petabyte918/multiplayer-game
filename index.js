@@ -33,6 +33,13 @@ io.on("connection", socket => {
         callback(id)
     })
 
+    socket.on("info update", player => {
+        players[id].name = player.name
+        players[id].pos.x = player.x
+        players[id].pos.y = player.y
+        players[id].direction = player.direction
+    })
+
     // removes a player from the server
     socket.on("disconnect", () => {
         delete players[id]
