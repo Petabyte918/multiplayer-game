@@ -7,7 +7,7 @@
     let keys
     let lastTick
     let deltaTime
-    let dtSpan, xSpan, ySpan, vxSpan, vySpan, rotSpan, rotvSpan
+    let dtSpan, xSpan, ySpan, vxSpan, vySpan, rotSpan, rotvSpan, playercountSpan
 
     const socket = io()
     delete io
@@ -20,6 +20,7 @@
         vySpan = document.getElementById("vy")
         rotSpan = document.getElementById("rot")
         rotvSpan = document.getElementById("rotv")
+        playercountSpan = document.getElementById("playercount")
 
         canvas = document.getElementById("game")
         ctx = canvas.getContext("2d")
@@ -62,7 +63,7 @@
             delete keys[evt.key]
         })
 
-        window.setInterval(() => {        
+        window.setInterval(() => {
             dtSpan.innerHTML = deltaTime * 1000
             xSpan.innerHTML = Math.round(player.pos.x * 100) / 100
             ySpan.innerHTML = Math.round(player.pos.y * 100) / 100
@@ -70,6 +71,7 @@
             vySpan.innerHTML = Math.round(player.vel.y * 100) / 100
             rotSpan.innerHTML = Math.round(player.direction * 100) / 100
             rotvSpan.innerHTML = Math.round(player.rotVel * 100) / 100
+            playercountSpan.innerHTML = Object.keys(players).length
         }, STAT_UPDATE_DELAY)
 
         lastTick = new Date().getTime()

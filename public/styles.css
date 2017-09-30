@@ -1,3 +1,8 @@
+* {
+    font-family: monospace;
+    box-sizing: border-box;
+}
+
 html {
     background-color: black;
 }
@@ -15,11 +20,7 @@ canvas {
 }
 
 div.stats {
-    font-family: monospace;
     position: absolute;
-    left: 10px;
-    top: 10px;
-    padding: 5px;
     color: #383838;
 }
 
