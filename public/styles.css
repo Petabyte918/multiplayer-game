@@ -7,9 +7,9 @@ html {
     background-color: #6D7B8D;
 }
 
-canvas {
-    background-color: #FFFFFF;
-    margin: 100px;
+div.wrapper {
+    width: 800px;
+    height: 800px;
 
     position: absolute;
     margin: auto;
@@ -17,6 +17,17 @@ canvas {
     left: 0;
     right: 0;
     bottom: 0;
+}
+
+canvas {
+    background-color: #FFFFFF;
+}
+
+div#instructions {
+    font-size: 1.3em;
+    color: #bdbdbd;
+    font-family: sans-serif;
+    text-align: center;
 }
 
 div.stats {

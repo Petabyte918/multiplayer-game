@@ -96,6 +96,10 @@
             }
         }, STAT_UPDATE_DELAY)
 
+        window.setTimeout(() => {
+            writeInstructions()
+        }, STAT_UPDATE_DELAY * 2)
+
         lastTick = new Date().getTime()
         update()
     }
@@ -212,6 +216,16 @@
     function right() {
         player.right()
         socket.emit("right")
+    }
+
+    function writeInstructions() {
+        const elem = document.getElementById("instructions")
+
+        if (orientation !== undefined && orientation.gamma !== null && orientation.beta !== null) {
+            elem.innerHTML = "Tilt your device forwards to move forwards, and roll it to the sides to turn."
+        } else {
+            elem.innerHTML = "Use the arrow keys to move around."
+        }
     }
 
     init()
