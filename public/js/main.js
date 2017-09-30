@@ -191,18 +191,18 @@
             if (orientation.beta < -1) {
                 shouldMove.forward = true
             }
-        } else {
-            if (keys.ArrowRight) {
-                shouldMove.right = true
-            }
-    
-            if (keys.ArrowLeft) {
-                shouldMove.left = true
-            }
-    
-            if (keys.ArrowUp) {
-                shouldMove.forward = true
-            }
+        }
+        
+        if (keys.ArrowRight) {
+            shouldMove.right = true
+        }
+
+        if (keys.ArrowLeft) {
+            shouldMove.left = true
+        }
+
+        if (keys.ArrowUp) {
+            shouldMove.forward = true
         }
 
         if (shouldMove.left) {
