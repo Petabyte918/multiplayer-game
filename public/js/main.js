@@ -86,9 +86,9 @@
                 if (players[id] === undefined) {
                     players[id] = new Player(serverPlayer.name, serverPlayer.x, serverPlayer.y)
                 } else {
-                    players[id].pos.x = serverPlayer.x
-                    players[id].pos.y = serverPlayer.y
-                    players[id].direction = serverPlayer.direction
+                    players[id].pos.x = lerp(players[id].pos.x, serverPlayer.x, 0.5)
+                    players[id].pos.y = lerp(players[id].pos.y, serverPlayer.y, 0.5)
+                    players[id].direction = lerp(players[id].direction, serverPlayer.direction, 0.5)
                 }
             }
         }

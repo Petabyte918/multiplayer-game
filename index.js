@@ -1,4 +1,6 @@
 const PORT = process.env.PORT || 3030
+const CANVAS_WIDTH = 800
+const CANVAS_HEIGHT = 800
 
 const TICK_RATE = 15 // milliseconds
 let lastTick = new Date().getTime()
