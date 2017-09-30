@@ -4,7 +4,7 @@
 }
 
 html {
-    background-color: black;
+    background-color: #6D7B8D;
 }
 
 canvas {
@@ -21,7 +21,7 @@ canvas {
 
 div.stats {
     position: absolute;
-    color: #383838;
+    color: #bdbdbd;
 }
 
 div.stats ul {
@@ -30,12 +30,12 @@ div.stats ul {
 }
 
 div.stats .bright {
-    color: #555;
+    color: #dbdbdb;
     font-weight: bold;
 }
 
 div.stats a {
-    color: #555;
+    color: #dbdbdb;
     font-weight: bold;
-    color: #555;
+    color: #dbdbdb;
 }
