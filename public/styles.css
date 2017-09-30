@@ -51,3 +51,12 @@ div.menu a {
     font-weight: bold;
     color: #dbdbdb;
 }
+
+div.menu form {
+    width: 250px;
+}
+
+div.menu input[type=submit] {
+    float: right;
+    width: 90px;
+}

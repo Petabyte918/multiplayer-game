@@ -94,6 +94,19 @@
             return false
         })
 
+        document.getElementById("shape-form").addEventListener("submit", evt => {
+            let elem = document.getElementById("change-shape-input")
+            let shape = elem.options[elem.selectedIndex].value
+
+            players[clientID].shape = shape
+
+            socket.emit("info update", player.condense())
+
+            evt.preventDefault()
+
+            return false
+        })
+
         window.setInterval(() => {
             dtSpan.innerHTML = deltaTime * 1000
             xSpan.innerHTML = round(player.pos.x, 2)
@@ -130,6 +143,7 @@
                     players[id].pos.x = lerp(players[id].pos.x, serverPlayer.x, 0.5)
                     players[id].pos.y = lerp(players[id].pos.y, serverPlayer.y, 0.5)
                     players[id].direction = lerp(players[id].direction, serverPlayer.direction, 0.5)
+                    players[id].shape = serverPlayer.shape
                 }
             }
         }

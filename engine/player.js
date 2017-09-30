@@ -6,9 +6,19 @@ const PLAYER_SLOWDOWN = 0.9
 const PLAYER_ROT_SLOWDOWN = 0.85
 const PLAYER_ROTACCEL = 0.005
 
+/*
+Possible shapes:
+
+ - square
+ - triangle
+ - circle
+ - star
+*/
+
 class Player {
     constructor(name, x, y) {
         this.name = name
+        this.shape = "square"
         
         this.pos = {
             x: x,
@@ -29,14 +39,50 @@ class Player {
         
         ctx.translate(this.pos.x, this.pos.y)
         ctx.rotate(this.direction)
+        ctx.beginPath()
     
-        ctx.fillRect(
-            -PLAYER_SIDELENGTH / 2,
-            -PLAYER_SIDELENGTH / 2,
-            PLAYER_SIDELENGTH,
-            PLAYER_SIDELENGTH
-        )
+        switch (this.shape) {
+            case "triangle":
+                ctx.rotate(Math.PI / 2)
+                ctx.moveTo(-PLAYER_SIDELENGTH / 2, PLAYER_SIDELENGTH / 2)
+                ctx.lineTo(PLAYER_SIDELENGTH / 2, PLAYER_SIDELENGTH / 2)
+                ctx.lineTo(0, -PLAYER_SIDELENGTH / 1.5)
+                ctx.lineTo(-PLAYER_SIDELENGTH / 2, PLAYER_SIDELENGTH / 2)
+
+                break
+
+            case "circle":
+                ctx.arc(0, 0, PLAYER_SIDELENGTH * 0.7, 0, Math.PI * 2)
+
+                break
+                
+            case "star":
+                const n = 5
+                const inset = PLAYER_SIDELENGTH / 8
+                const r = PLAYER_SIDELENGTH / 2
+
+                ctx.rotate(Math.PI / n + Math.PI / 2)
+
+                for (let i = 0; i < 5; i++) {
+                    ctx.rotate(Math.PI / 5)
+                    ctx.lineTo(0, 0 - (r * inset))
+                    ctx.rotate(Math.PI / 5)
+                    ctx.lineTo(0, 0 - r)
+                }
+
+                break
+
+            default:
+                ctx.fillRect(
+                    -PLAYER_SIDELENGTH / 2,
+                    -PLAYER_SIDELENGTH / 2,
+                    PLAYER_SIDELENGTH,
+                    PLAYER_SIDELENGTH
+                )
+        }
     
+        ctx.closePath()
+        ctx.fill()
         ctx.restore()
 
         ctx.font = "monospace"
@@ -79,7 +125,8 @@ class Player {
             x: this.pos.x,
             y: this.pos.y,
             direction: this.direction,
-            name: this.name
+            name: this.name,
+            shape: this.shape
         }
     }
 }

@@ -29,6 +29,8 @@ io.on("connection", socket => {
     // receives client info from the connected client and gives him his ID
     socket.on("client info", (player, callback) => {
         players[id] = new Player(player.name, player.x, player.y)
+        players[id].shape = player.shape
+        players[id].direction = -Math.PI / 2
 
         callback(id)
     })
@@ -38,6 +40,7 @@ io.on("connection", socket => {
         players[id].pos.x = player.x
         players[id].pos.y = player.y
         players[id].direction = player.direction
+        players[id].shape = player.shape
     })
 
     // removes a player from the server
