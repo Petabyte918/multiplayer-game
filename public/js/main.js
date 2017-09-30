@@ -5,15 +5,26 @@
     let players, player
     let clientID
     let width, height
-    let keys
+    let keys, orientation
     let lastTick
     let deltaTime
-    let dtSpan, xSpan, ySpan, vxSpan, vySpan, rotSpan, rotvSpan, playercountSpan
+    let dtSpan, xSpan, ySpan, vxSpan, vySpan,
+        rotSpan, rotvSpan, playercountSpan,
+        betaSpan, gammaSpan
 
     const socket = io()
     delete io
 
     function init() {
+        if (window.DeviceOrientationEvent) {
+            window.addEventListener("deviceorientation", evt => {
+                orientation = {
+                    gamma: evt.gamma,
+                    beta: evt.beta
+                }
+            }, true)
+        }
+
         dtSpan = document.getElementById("dt")
         xSpan = document.getElementById("x")
         ySpan = document.getElementById("y")
@@ -22,6 +33,8 @@
         rotSpan = document.getElementById("rot")
         rotvSpan = document.getElementById("rotv")
         playercountSpan = document.getElementById("playercount")
+        betaSpan = document.getElementById("beta")
+        gammaSpan = document.getElementById("gamma")
 
         canvas = document.getElementById("game")
         ctx = canvas.getContext("2d")
@@ -69,13 +82,18 @@
 
         window.setInterval(() => {
             dtSpan.innerHTML = deltaTime * 1000
-            xSpan.innerHTML = Math.round(player.pos.x * 100) / 100
-            ySpan.innerHTML = Math.round(player.pos.y * 100) / 100
-            vxSpan.innerHTML = Math.round(player.vel.x * 100) / 100
-            vySpan.innerHTML = Math.round(player.vel.y * 100) / 100
-            rotSpan.innerHTML = Math.round(player.direction * 100) / 100
-            rotvSpan.innerHTML = Math.round(player.rotVel * 100) / 100
+            xSpan.innerHTML = round(player.pos.x, 2)
+            ySpan.innerHTML = round(player.pos.y, 2)
+            vxSpan.innerHTML = round(player.vel.x, 2)
+            vySpan.innerHTML = round(player.vel.y, 2)
+            rotSpan.innerHTML = round(player.direction, 2)
+            rotvSpan.innerHTML = round(player.rotVel, 2)
             playercountSpan.innerHTML = Object.keys(players).length
+
+            if (orientation !== undefined && orientation.gamma !== null && orientation.beta !== null) {
+                betaSpan.innerHTML = round(orientation.beta, 2)
+                gammaSpan.innerHTML = round(orientation.gamma, 2)
+            }
         }, STAT_UPDATE_DELAY)
 
         lastTick = new Date().getTime()
@@ -135,20 +153,65 @@
     }
 
     function handleInput() {
-        if (keys["ArrowRight"]) {
-            player.right()
-            socket.emit("right")
+        let shouldMove = {
+            left: false,
+            right: false,
+            forward: false
         }
 
-        if (keys["ArrowLeft"]) {
-            player.left()
-            socket.emit("left")
+        // If on a mobile device
+        if (orientation !== undefined && orientation.gamma !== null && orientation.beta !== null) {
+            if (orientation.gamma < -5) {
+                shouldMove.left = true
+            }
+            
+            if (orientation.gamma > 5) {
+                shouldMove.right = true
+            }
+    
+            if (orientation.beta < 2) {
+                shouldMove.forward = true
+            }
+        } else {
+            if (keys["ArrowRight"]) {
+                shouldMove.right = true
+            }
+    
+            if (keys["ArrowLeft"]) {
+                shouldMove.left = true
+            }
+    
+            if (keys["ArrowUp"]) {
+                shouldMove.forward = true
+            }
         }
 
-        if (keys["ArrowUp"]) {
-            player.accelerate()
-            socket.emit("accel")
+        if (shouldMove.left) {
+            left()
         }
+
+        if (shouldMove.right) {
+            right()
+        }
+
+        if (shouldMove.forward) {
+            accel()
+        }
+    }
+
+    function accel() {
+        player.accelerate()
+        socket.emit("accel")
+    }
+
+    function left() {
+        player.left()
+        socket.emit("left")
+    }
+
+    function right() {
+        player.right()
+        socket.emit("right")
     }
 
     init()

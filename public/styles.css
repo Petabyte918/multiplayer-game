@@ -1,5 +1,5 @@
 * {
-    font-family: monospace;
+    font-family: "Courier New", Courier, serif;
     box-sizing: border-box;
 }
 
@@ -22,6 +22,7 @@ canvas {
 div.stats {
     position: absolute;
     color: #bdbdbd;
+    font-size: 1.1em;
 }
 
 div.stats ul {

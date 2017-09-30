@@ -41,15 +41,21 @@ io.on("connection", socket => {
     })
 
     socket.on("accel", () => {
-        players[id].accelerate()
+        if (players[id] !== undefined) {
+            players[id].accelerate()
+        }
     })
 
     socket.on("left", () => {
-        players[id].left()
+        if (players[id] !== undefined) {
+            players[id].left()
+        }
     })
 
     socket.on("right", () => {
-        players[id].right()
+        if (players[id] !== undefined) {
+            players[id].right()
+        }
     })
 })
 
