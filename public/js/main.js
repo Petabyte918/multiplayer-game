@@ -9,6 +9,7 @@
     let lastTick
     let deltaTime
     let cameraTranslation
+    let backgroundImage, backgroundPattern
     let dtSpan, xSpan, ySpan, vxSpan, vySpan,
         rotSpan, rotvSpan, playercountSpan,
         betaSpan, gammaSpan
@@ -39,6 +40,11 @@
 
         canvas = document.getElementById("game")
         ctx = canvas.getContext("2d")
+
+        backgroundImage = new Image()
+        backgroundImage.src = "/assets/checkerboard.png"
+
+        backgroundPattern = ctx.createPattern(backgroundImage, "repeat")
 
         // Make the stage render properly on HiDPI displays
         {
@@ -163,6 +169,9 @@
         cameraTranslation.y = lerp(cameraTranslation.y, -player.pos.y + height / 2, 0.1)
     
         ctx.translate(cameraTranslation.x, cameraTranslation.y)
+
+        ctx.fillStyle = backgroundPattern
+        ctx.fillRect(-cameraTranslation.x, -cameraTranslation.y, width, height)
 
         ctx.fillStyle = "darkgrey"
         for (let id in players) {
