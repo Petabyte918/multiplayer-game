@@ -14,59 +14,67 @@
         <title>Multiplayer Game</title>
     </head>
     <body>
-        <div class="menu">
-            <ul>
-                <li>
-                    Δt/s = <span class="bright" id="dt">?</span>ms
-                </li>
-                <li>
-                    (x, y)/m = (<span class="bright" id="x">?</span>, <span class="bright" id="y">?</span>)
-                </li>
-                <li>
-                    (vx, vy)/ms^1 = (<span class="bright" id="vx">?</span>, <span class="bright" id="vy">?</span>)
-                </li>
-                <li>
-                    rotation/r = <span class="bright" id="rot">?</span>
-                </li>
-                <li>
-                    rotational velocity/rs^-1 = <span class="bright" id="rotv">?</span>
-                </li>
-                <li>
-                    (β, ɣ) = (<span class="bright" id="beta">?</span>, <span class="bright" id="gamma">?</span>)
-                </li>
-                <li>
-                    players connected = <span class="bright" id="playercount">?</span>
-                </li>
-                <li>
-                    <br>
-                </li>
-                <li>
-                    Made by <a href="http://zacgarby.co.uk">Zac Garby</a>
-                </li>
-                <li>
-                    ★ the <a href="https://github.com/Zac-Garby/multiplayer-game">Git repository</a>
-                </li>
-                <li>
-                    <br>
-                </li>
-                <li>
-                    <form action="" id="name-form">
-                        <input type="text" name="change-name" id="change-name-input" placeholder="Name" minlength="1" maxlength="32">
-                        <input type="submit" value="Change name">
-                    </form>
-
-                    <form action="" id="shape-form">
-                        <select name="change-shape" id="change-shape-input">
-                            <option value="square">Square</option>
-                            <option value="triangle">Triangle</option>
-                            <option value="circle">Circle</option>
-                            <option value="star">Star</option>
-                        </select>
-                        <input type="submit" value="Change shape">
-                    </form>
-                </li>
-            </ul>
-        </div>
+        <table class="menu">
+            <tr>
+                <td>
+                    <ul>
+                        <li>
+                            Δt/s = <span class="bright" id="dt">?</span>ms
+                        </li>
+                        <li>
+                            (x, y)/m = (<span class="bright" id="x">?</span>, <span class="bright" id="y">?</span>)
+                        </li>
+                        <li>
+                            (vx, vy)/ms^1 = (<span class="bright" id="vx">?</span>, <span class="bright" id="vy">?</span>)
+                        </li>
+                        <li>
+                            rotation/r = <span class="bright" id="rot">?</span>
+                        </li>
+                        <li>
+                            rotational velocity/rs^-1 = <span class="bright" id="rotv">?</span>
+                        </li>
+                        <li>
+                            (β, ɣ) = (<span class="bright" id="beta">?</span>, <span class="bright" id="gamma">?</span>)
+                        </li>
+                        <li>
+                            players connected = <span class="bright" id="playercount">?</span>
+                        </li>
+                        <li>
+                            <br>
+                        </li>
+                        <li>
+                            Made by <a href="http://zacgarby.co.uk">Zac Garby</a>
+                        </li>
+                        <li>
+                            ★ the <a href="https://github.com/Zac-Garby/multiplayer-game">Git repository</a>
+                        </li>
+                        <li>
+                            <br>
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            <form action="" id="name-form">
+                                <input type="text" name="change-name" id="change-name-input" placeholder="Name" minlength="1" maxlength="32">
+                                <input type="submit" value="Change name">
+                            </form>
+        
+                            <form action="" id="shape-form">
+                                <select name="change-shape" id="change-shape-input">
+                                    <option value="square">Square</option>
+                                    <option value="triangle">Triangle</option>
+                                    <option value="circle">Circle</option>
+                                    <option value="star">Star</option>
+                                </select>
+                                <input type="submit" value="Change shape">
+                            </form>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
 
         <div class="wrapper">
             <canvas id="game" width="800" height="800"></canvas>

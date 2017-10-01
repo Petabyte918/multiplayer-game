@@ -30,30 +30,41 @@ div#instructions {
     text-align: center;
 }
 
-div.menu {
+table.menu {
     position: absolute;
     color: #bdbdbd;
     font-size: 1.1em;
 }
 
-div.menu ul {
+table.menu ul {
+    display: inline-block;
     list-style: none;
     padding-left: 15px;
 }
 
-div.menu .bright {
+table.menu td {
+    vertical-align: top;
+    padding-right: 30px;
+}
+
+table.menu .bright {
     color: #dbdbdb;
     font-weight: bold;
 }
 
-div.menu a {
+table.menu a {
     color: #dbdbdb;
     font-weight: bold;
     color: #dbdbdb;
 }
 
-div.menu input[type=submit] {
+table.menu input[type=submit] {
     display: block;
     margin-top: 5px;
     margin-bottom: 10px;
+}
+
+table.menu input, table.menu select {
+    font-family: sans-serif;
+    width: 150px;
 }
