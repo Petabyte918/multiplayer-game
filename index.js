@@ -3,7 +3,7 @@ const CANVAS_WIDTH = 800
 const CANVAS_HEIGHT = 800
 
 const TICK_RATE = 15 // milliseconds
-let lastTick = new Date().getTime()
+let lastTick = Date.now()
 
 let express = require("express")
 let app = express()
@@ -70,7 +70,7 @@ io.on("connection", socket => {
 })
 
 function tick() {
-    let time = new Date().getTime()
+    let time = Date.now()
     let diff = (time - lastTick) / 1000
     lastTick = time
 
@@ -78,7 +78,7 @@ function tick() {
 
     for (let id in players) {
         if (players.hasOwnProperty(id)) {
-            players[id].update(diff)       
+            players[id].update(diff)
             condensed[id] = players[id].condense()
         }
     }
