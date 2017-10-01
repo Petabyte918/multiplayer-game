@@ -45,6 +45,7 @@ table.menu ul {
 table.menu td {
     vertical-align: top;
     padding-right: 30px;
+    width: 400px;
 }
 
 table.menu .bright {
