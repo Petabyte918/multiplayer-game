@@ -152,19 +152,19 @@
     function render() {
         ctx.clearRect(0, 0, width, height)
 
+        ctx.fillStyle = "darkgrey"
         for (let id in players) {
             if (players.hasOwnProperty(id)) {
                 if (id === clientID) {
-                    ctx.fillStyle = "black"
+                    continue
                 }
 
                 players[id].render(ctx)
-
-                if (id === clientID) {
-                    ctx.fillStyle = "darkgrey"
-                }
             }
         }
+
+        ctx.fillStyle = "black"
+        player.render(ctx)
     }
 
     function update() {
