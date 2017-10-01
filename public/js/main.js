@@ -188,6 +188,60 @@
         player.render(ctx)
 
         ctx.restore()
+
+        arrowToClosestPlayer()
+    }
+
+    function getClosestPlayer() {
+        let close = Infinity
+        let closest = null
+
+        for (let id in players) {
+            if (players.hasOwnProperty(id)) {
+                if (id == clientID) {
+                    continue
+                }
+
+                let other = players[id];
+                
+                let diffx = other.pos.x - player.pos.x
+                let diffy = other.pos.y - player.pos.y
+
+                // The distance squared - just for comparison
+                let distance = diffx * diffx + diffy * diffy
+
+                if (distance < close) closest = other
+            }
+        }
+
+        return closest
+    }
+
+    function arrowToClosestPlayer() {
+        let closest = getClosestPlayer()
+
+        if (closest == null) return
+
+        let scl = PLAYER_SIDELENGTH * 2.5
+        let dir = direction(player.pos, closest.pos)
+        let angle = Math.atan2(dir.y, dir.x)
+
+        ctx.save()
+        ctx.translate(width / 2, height / 2)
+        ctx.rotate(angle)
+        ctx.translate(scl, 0)
+
+        ctx.beginPath()
+        ctx.moveTo(-10, -2.5)
+        ctx.lineTo(-10, 2.5)
+        ctx.lineTo(2.5, 0)
+        ctx.moveTo(-10, -2.5)
+
+        ctx.fillStyle = "darkgrey"
+        ctx.fill()
+        ctx.closePath()
+
+        ctx.restore()
     }
 
     function update() {

@@ -14,6 +14,9 @@
         <title>Multiplayer Game</title>
     </head>
     <body>
+        <!-- A bit of a hack to load the image -->
+        <img src="assets/checkerboard.png" id="checkerboard" style="position: absolute; left: -9999px; top: -9999px;">
+
         <table class="menu">
             <tr>
                 <td>
@@ -75,9 +78,6 @@
                 </td>
             </tr>
         </table>
-
-        <!-- A bit of a hack to load the image -->
-        <img src="assets/checkerboard.png" id="checkerboard" style="display: none">
 
         <div class="wrapper">
             <canvas id="game" width="800" height="800"></canvas>
