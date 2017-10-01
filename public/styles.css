@@ -59,6 +59,11 @@ table.menu a {
     color: #dbdbdb;
 }
 
+table.menu a:hover {
+    background-color: #dbdbdb;
+    color: #6D7B8D;
+}
+
 table.menu input[type=submit] {
     display: block;
     margin-top: 5px;
