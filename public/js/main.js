@@ -8,6 +8,7 @@
     let keys, orientation
     let lastTick
     let deltaTime
+    let cameraTranslation
     let dtSpan, xSpan, ySpan, vxSpan, vySpan,
         rotSpan, rotvSpan, playercountSpan,
         betaSpan, gammaSpan
@@ -63,6 +64,11 @@
             players[id] = player
             clientID = id
         })
+
+        cameraTranslation = {
+            x: -player.pos.x + width / 2,
+            y: -player.pos.y + height / 2
+        }
 
         socket.on("tick", onTick)
 
@@ -152,6 +158,12 @@
     function render() {
         ctx.clearRect(0, 0, width, height)
 
+        ctx.save()
+        cameraTranslation.x = lerp(cameraTranslation.x, -player.pos.x + width / 2, 0.1)
+        cameraTranslation.y = lerp(cameraTranslation.y, -player.pos.y + height / 2, 0.1)
+    
+        ctx.translate(cameraTranslation.x, cameraTranslation.y)
+
         ctx.fillStyle = "darkgrey"
         for (let id in players) {
             if (players.hasOwnProperty(id)) {
@@ -165,6 +177,8 @@
 
         ctx.fillStyle = "black"
         player.render(ctx)
+
+        ctx.restore()
     }
 
     function update() {
