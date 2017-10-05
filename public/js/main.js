@@ -170,9 +170,6 @@
     
         ctx.translate(cameraTranslation.x, cameraTranslation.y)
 
-        ctx.fillStyle = backgroundPattern
-        ctx.fillRect(-cameraTranslation.x, -cameraTranslation.y, width, height)
-
         ctx.fillStyle = "darkgrey"
         for (let id in players) {
             if (players.hasOwnProperty(id)) {
