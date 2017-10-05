@@ -1,6 +1,8 @@
 # multiplayer-game
 A fairly basic multiplayer game using socket.io.
 
+![](screenshot.png)
+
 It doesn't really do much at the moment - use the arrow keys to turn
 and accelerate.
 
